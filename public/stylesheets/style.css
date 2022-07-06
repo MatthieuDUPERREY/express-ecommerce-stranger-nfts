@@ -1,3 +1,9 @@
 body {
     background-color: rgb(255, 135, 217);
 }
+nav {
+    text-align: center;
+    background-color: rgb(142, 182, 204);
+    padding: 1rem;
+    margin: 0 auto;
+}

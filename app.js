@@ -6,24 +6,63 @@ const app = express();
 //
 app.use(express.static('public')); // configure express to use "public" as the directory for static content
 
+app.set("views", __dirname + "/views"); //tells our Express app where to look for our views
+app.set("view engine", "hbs"); //sets HBS as the template engine
+
+
+
 
 //
 // ROUTES
 //
 
-app.get("/", (request, response) => {
-    // response.send("this is string");
-    response.sendFile(__dirname + '/views/home.html');
+
+
+app.get("/", (req, res) => {
+    // res.send("this is string");
+    // res.sendFile(__dirname + '/views/home.html');
+    res.render("home");
 });
 
-
-app.get("/products", (request, response) => {
-    response.sendFile(__dirname + '/views/products-page.html');
+app.get("/products", (req, res) => {
+    res.render("products"); // render "products.hbs"
 });
 
+app.get("/products/nyan", (req, res) => {
 
-app.get("/contact", (request, response) => {
-    response.sendFile(__dirname + '/views/contact-page.html');
+    const productDetails = {
+        title: "Nyan NFT",
+        price: 30,
+        imgFile: "nyan.png"
+    }
+
+    res.render("product-details", productDetails);
+});
+
+app.get("/products/ironhack", (req, res) => {
+
+    const productDetails = {
+        title: "Ironhack NFT",
+        price: 40,
+        imgFile: "ironhack.png"
+    }
+
+    res.render("product-details", productDetails);
+});
+
+app.get("/products/stranger", (req, res) => {
+
+    const productDetails = {
+        title: "Stranger Coding Things NFT",
+        price: 50,
+        imgFile: "stranger.jpg"
+    }
+
+    res.render("product-details", productDetails);
+});
+
+app.get("/contact", (req, res) => {
+    res.render("contact-page");
 });
 
 
