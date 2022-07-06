@@ -1,17 +1,28 @@
 <h1>{{title}}</h1>
 
 <section id="product-details">
-    <p><strong>Price:</strong> {{price}}€</p>
+
+    {{#if price}}
+        <p><strong>Price:</strong> {{price}}€</p>
+    {{else}}
+        <p>This is too valuable. Please contact us to discuss about price for this NFT</p>
+    {{/if}}
+
+
+    {{#if categories}}
+        <div>
+            <h2>This NFT belongs to the following categories:</h2>
+            <ul>
+                {{#each categories}}
+                    <li>
+                        <a href="">{{this}}</a>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    {{/if}}
+
     <img src='/images/{{imgFile}}' />
 </section>
 
-
-<section id="info">
-    <h2>
-        Info about our products:
-    </h2>
-    <p>
-        We offer the best NFTs and the best service.
-        Once you pay you'll receive your NFTs by email.
-    </p>
-</section>
+{{> banner }}
