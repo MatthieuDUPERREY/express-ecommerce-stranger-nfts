@@ -15,6 +15,10 @@ app.set("view engine", "hbs"); //sets HBS as the template engine
 hbs.registerPartials(__dirname + "/views/partials"); // config. for partials
 
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
 
 //
 // ROUTES
@@ -72,6 +76,14 @@ app.get("/contact", (req, res) => {
     res.render("contact-page");
 });
 
+
+app.post("/login", (req, res) => {
+    if(req.body.password === "1234"){
+       res.send("welcome"); 
+    } else {
+        res.send("sorry, not allowed");
+    }
+});
 
 app.listen(3000, () => console.log("express app listening in port 3000"));
 

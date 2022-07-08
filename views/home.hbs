@@ -8,11 +8,27 @@
             Max Price:
             <input type="number" name="maxPrice" />
         </label>
-        <button>Submit</button>
+        <button type="submit">Submit</button>
     </form>
 </section>
 
 
+<section id="login">
+    <form action="/login" method="POST">
 
+        <label>
+            e-mail:
+            <input type="email" name="email" />
+        </label>
+
+        <label>
+            password:
+            <input type="password" name="password" />
+        </label>
+
+        <button type="submit">Login</button>
+
+    </form>
+</section>
 
 {{> banner }}
