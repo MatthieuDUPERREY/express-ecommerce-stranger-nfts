@@ -2,6 +2,8 @@ const express = require('express');
 const hbs = require("hbs");
 const app = express();
 
+const productsArr = require("./data/products");
+
 //
 // CONFIG
 //
@@ -30,39 +32,16 @@ app.get("/products", (req, res) => {
 });
 
 
-app.get("/products/nyan", (req, res) => {
+app.get("/products/:productId", (req, res) => {
+    const id = req.params.productId;
+    
+    const productDetails = productsArr.find( productObj => id == productObj.id);
 
-    const productDetails = {
-        title: "Nyan NFT",
-        price: 30,
-        imgFile: "nyan.png"
+    if(productDetails){
+        res.render("product-details", productDetails);
+    } else {
+        res.status(404).send("product doesnt exist")
     }
-
-    res.render("product-details", productDetails);
-});
-
-
-app.get("/products/ironhack", (req, res) => {
-
-    const productDetails = {
-        title: "Ironhack NFT",
-        price: 40,
-        imgFile: "ironhack.png"
-    }
-
-    res.render("product-details", productDetails);
-});
-
-
-app.get("/products/stranger", (req, res) => {
-
-    const productDetails = {
-        title: "Stranger Coding Things NFT",
-        imgFile: "stranger.jpg",
-        categories: ["techies", "best-sellers", "luxury"]
-    }
-
-    res.render("product-details", productDetails);
 });
 
 
