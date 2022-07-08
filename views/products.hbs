@@ -1,13 +1,17 @@
 <h1>List of amazing NFTs</h1>
 
-<ul>
-    <li>
-        <a href="/products/1">Nyan NFT</a>
-    </li>
-    <li>
-        <a href="/products/2">Ironhack NFT</a>
-    </li>
-    <li>
-        <a href="/products/3">Stranger NFT</a>
-    </li>
-</ul>
+{{#if products}}
+    <ul>
+        {{#each products}}
+            <li>
+                <a href="/products/{{this.id}}">
+                    {{this.title}}
+                </a>
+            </li>
+        {{/each}}
+    </ul>
+{{else}}
+    <p>No products meet that search criteria.</p>
+{{/if}}
+
+

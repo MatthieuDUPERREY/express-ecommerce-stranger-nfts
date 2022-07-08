@@ -16,7 +16,18 @@ const productsArr = [
         title: "Stranger Coding Things NFT",
         imgFile: "stranger.jpg",
         categories: ["techies", "best-sellers", "luxury"]
-    }
+    },
+    {
+        id: 4,
+        title: "Lucas NFT",
+        price: 50
+    },
+
+    {
+        id: 5,
+        title: "Felipe NFT",
+        price: 60
+    },
 ];
 
 module.exports = productsArr;
