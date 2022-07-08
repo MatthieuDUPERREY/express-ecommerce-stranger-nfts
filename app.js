@@ -27,9 +27,32 @@ app.get("/", (req, res) => {
 });
 
 
+
 app.get("/products", (req, res) => {
-    res.render("products"); // render "products.hbs"
+
+    const data = {}; // will store the data that we send to the view
+
+    if(req.query.maxPrice) {
+        // read maxPrice from req.query & convert to float number
+        const maxPrice = parseFloat(req.query.maxPrice);
+
+        // filter products
+        const filteredProducts = productsArr.filter( (product) => {
+            return product.price <= maxPrice;
+        });
+
+        // we will store only the products that meet the condition
+        data.products = filteredProducts;
+
+    } else {
+        // store all products
+        data.products = productsArr;
+    }
+
+    res.render("products", data);
 });
+
+
 
 
 app.get("/products/:productId", (req, res) => {
